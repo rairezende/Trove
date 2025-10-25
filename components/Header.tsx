@@ -9,7 +9,7 @@ const Header: React.FC = () => {
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                 <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-slate-800 hover:text-indigo-600 transition-colors">
                     <ListPlus className="w-8 h-8 text-indigo-500" />
-                    <span>Trove</span>
+                    <span>Trovy</span>
                 </Link>
                 <button
                     onClick={() => navigate('/create')}
