@@ -87,7 +87,7 @@ const ListView: React.FC<ListViewProps> = ({ lists, updateList, deleteList }) =>
 
   return (
     <div className="max-w-3xl mx-auto">
-      <button onClick={() => navigate('/')} className="flex items-center gap-2 text-slate-600 hover:text-slate-900 font-semibold mb-4">
+      <button onClick={() => navigate('/')} className="flex items-center gap-2 text-stone-600 hover:text-stone-900 font-semibold mb-4">
         <ArrowLeft size={18} />
         All Lists
       </button>
@@ -95,17 +95,17 @@ const ListView: React.FC<ListViewProps> = ({ lists, updateList, deleteList }) =>
       <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <h1 className="text-3xl font-bold text-slate-800">{list.title}</h1>
-            <p className="text-slate-500 mt-1">{list.description}</p>
+            <h1 className="text-3xl font-bold text-stone-700">{list.title}</h1>
+            <p className="text-stone-500 mt-1">{list.description}</p>
           </div>
           <div className="flex items-center gap-2">
             {list.isPublic ? (
-                <button onClick={() => setShowShareModal(true)} className="p-2 rounded-full hover:bg-slate-100 text-slate-600 transition-colors">
+                <button onClick={() => setShowShareModal(true)} className="p-2 rounded-full hover:bg-slate-100 text-stone-600 transition-colors">
                     <Share2 size={20} />
                 </button>
-            ) : <div className="p-2 rounded-full bg-slate-100 text-slate-600" title="This list is private"><Lock size={20}/></div>}
+            ) : <div className="p-2 rounded-full bg-slate-100 text-stone-600" title="This list is private"><Lock size={20}/></div>}
              <div className="relative">
-                <button onClick={() => setShowDeleteConfirm(!showDeleteConfirm)} className="p-2 rounded-full hover:bg-slate-100 text-slate-600 transition-colors">
+                <button onClick={() => setShowDeleteConfirm(!showDeleteConfirm)} className="p-2 rounded-full hover:bg-slate-100 text-stone-600 transition-colors">
                     <MoreVertical size={20} />
                 </button>
                 {showDeleteConfirm && (
@@ -125,12 +125,12 @@ const ListView: React.FC<ListViewProps> = ({ lists, updateList, deleteList }) =>
         {/* Progress Bar */}
         {totalCount > 0 && (
           <div className="my-6">
-              <div className="flex justify-between text-sm font-medium text-slate-500 mb-1">
+              <div className="flex justify-between text-sm font-medium text-stone-500 mb-1">
                   <span>Progress</span>
                   <span>{completedCount} / {totalCount}</span>
               </div>
               <div className="w-full bg-slate-200 rounded-full h-2.5">
-                  <div className="bg-indigo-600 h-2.5 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
+                  <div className="bg-primary h-2.5 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
               </div>
           </div>
         )}
@@ -142,9 +142,9 @@ const ListView: React.FC<ListViewProps> = ({ lists, updateList, deleteList }) =>
             value={newItemText}
             onChange={(e) => setNewItemText(e.target.value)}
             placeholder="Add a new item..."
-            className="flex-grow px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="flex-grow px-4 py-2 border border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           />
-          <button type="submit" className="bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 transition-colors flex-shrink-0" disabled={!newItemText.trim()}>
+          <button type="submit" className="bg-primary text-white p-2 rounded-md hover:bg-secondary transition-colors flex-shrink-0" disabled={!newItemText.trim()}>
             <Plus size={24} />
           </button>
         </form>
@@ -153,7 +153,7 @@ const ListView: React.FC<ListViewProps> = ({ lists, updateList, deleteList }) =>
         <ul className="space-y-3">
           {list.items.map(item => (
             <li key={item.id} className="flex items-center gap-3 p-3 bg-slate-50 rounded-md group">
-              <input type="checkbox" checked={item.completed} onChange={() => handleToggleItem(item.id)} className="h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"/>
+              <input type="checkbox" checked={item.completed} onChange={() => handleToggleItem(item.id)} className="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary cursor-pointer"/>
               
               {editingItemId === item.id ? (
                  <input
@@ -164,18 +164,18 @@ const ListView: React.FC<ListViewProps> = ({ lists, updateList, deleteList }) =>
                     autoFocus
                  />
               ) : (
-                 <span className={`flex-grow ${item.completed ? 'line-through text-slate-400' : 'text-slate-700'}`}>{item.text}</span>
+                 <span className={`flex-grow ${item.completed ? 'line-through text-stone-400' : 'text-stone-700'}`}>{item.text}</span>
               )}
 
               <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                 {editingItemId === item.id ? (
                     <>
                         <button onClick={() => handleSaveItem(item.id)} className="p-2 text-green-600 hover:bg-green-100 rounded-full"><Save size={18}/></button>
-                        <button onClick={() => setEditingItemId(null)} className="p-2 text-slate-500 hover:bg-slate-200 rounded-full"><X size={18}/></button>
+                        <button onClick={() => setEditingItemId(null)} className="p-2 text-stone-500 hover:bg-slate-200 rounded-full"><X size={18}/></button>
                     </>
                 ) : (
                     <>
-                        <button onClick={() => handleEditItem(item)} className="p-2 text-slate-500 hover:bg-slate-200 rounded-full"><Edit size={18}/></button>
+                        <button onClick={() => handleEditItem(item)} className="p-2 text-stone-500 hover:bg-slate-200 rounded-full"><Edit size={18}/></button>
                         <button onClick={() => handleDeleteItem(item.id)} className="p-2 text-red-500 hover:bg-red-100 rounded-full"><Trash2 size={18}/></button>
                     </>
                 )}
@@ -184,7 +184,7 @@ const ListView: React.FC<ListViewProps> = ({ lists, updateList, deleteList }) =>
           ))}
            {list.items.length === 0 && (
                 <div className="text-center py-10">
-                    <p className="text-slate-500">This list is empty. Add your first item above!</p>
+                    <p className="text-stone-500">This list is empty. Add your first item above!</p>
                 </div>
             )}
         </ul>
@@ -198,10 +198,10 @@ const ListView: React.FC<ListViewProps> = ({ lists, updateList, deleteList }) =>
               <h2 className="text-xl font-bold">Share this list</h2>
               <button onClick={() => setShowShareModal(false)} className="p-1 rounded-full hover:bg-slate-200"><X size={20} /></button>
             </div>
-            <p className="text-slate-600 mb-4">Anyone with this link can view this list.</p>
+            <p className="text-stone-600 mb-4">Anyone with this link can view this list.</p>
             <div className="flex gap-2">
-              <input type="text" value={window.location.href} readOnly className="flex-grow px-3 py-2 bg-slate-100 border border-slate-300 rounded-md"/>
-              <button onClick={handleCopyLink} className={`flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-white transition-colors ${copied ? 'bg-green-500' : 'bg-indigo-600 hover:bg-indigo-700'}`}>
+              <input type="text" value={window.location.href} readOnly className="flex-grow px-3 py-2 bg-slate-100 border border-stone-300 rounded-md"/>
+              <button onClick={handleCopyLink} className={`flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-white transition-colors ${copied ? 'bg-green-500' : 'bg-primary hover:bg-secondary'}`}>
                 {copied ? <Check size={20} /> : <Clipboard size={20} />}
                 <span>{copied ? 'Copied!' : 'Copy'}</span>
               </button>
